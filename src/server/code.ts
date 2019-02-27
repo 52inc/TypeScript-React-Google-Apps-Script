@@ -11,7 +11,7 @@ export interface IGlobals {
 }
 
 
-// Declare global object for type safety
+// Declare global object type to satisfy linter
 const global = {} as IGlobals;
 
 

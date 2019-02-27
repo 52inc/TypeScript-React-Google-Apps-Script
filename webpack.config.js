@@ -65,14 +65,15 @@ const clientConfig = Object.assign({}, sharedConfigSettings, {
 			{
 				test: /\.[jt]sx?$/,
 				use: "awesome-typescript-loader",
-				exclude: "/node_modules/"
+				exclude: /node_modules/
 			}, {
 				test: /\.css$/,
 				use: ["style-loader", "css-loader"]
 			}, {
 				test: /\.js$/,
 				use: "source-map-loader",
-				enforce: "pre"
+				enforce: "pre",
+				exclude: /node_modules/
 			}
 		]
 	},
@@ -101,11 +102,12 @@ const serverConfig = Object.assign({}, sharedConfigSettings, {
 			{
 				test: /\.[jt]sx?$/,
 				use: "awesome-typescript-loader",
-				exclude: "/node_modules/"
+				exclude: /node_modules/
 			}, {
 				test: /\.js$/,
 				use: "source-map-loader",
-				enforce: "pre"
+				enforce: "pre",
+				exclude: /node_modules/
 			}
 		]
 	},
@@ -119,6 +121,6 @@ const serverConfig = Object.assign({}, sharedConfigSettings, {
 
 module.exports = [
 	appsscriptConfig,
-	clientConfig,
-	serverConfig
+	clientConfig
+	// serverConfig
 ];
