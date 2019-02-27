@@ -121,6 +121,6 @@ const serverConfig = Object.assign({}, sharedConfigSettings, {
 
 module.exports = [
 	appsscriptConfig,
-	clientConfig
-	// serverConfig
+	clientConfig,
+	serverConfig
 ];
