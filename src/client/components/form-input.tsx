@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles.css"; // tslint:disable-line
+import "../styles.scss"; // tslint:disable-line
 
 
 interface IFormInputProps {

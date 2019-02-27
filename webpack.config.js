@@ -63,17 +63,32 @@ const clientConfig = Object.assign({}, sharedConfigSettings, {
 	module: {
 		rules: [
 			{
+				test: /\.js$/,
+				use: "source-map-loader",
+				enforce: "pre",
+				exclude: /node_modules/
+			}, {
 				test: /\.[jt]sx?$/,
 				use: "awesome-typescript-loader",
 				exclude: /node_modules/
 			}, {
 				test: /\.css$/,
-				use: ["style-loader", "css-loader"]
+				use: [
+					"style-loader",
+					"css-loader"
+				]
 			}, {
-				test: /\.js$/,
-				use: "source-map-loader",
-				enforce: "pre",
-				exclude: /node_modules/
+				test: /\.scss?$/,
+				use: [{
+					loader: "style-loader"
+				}, {
+					loader: "css-loader"
+				}, {
+					loader: "sass-loader",
+					options: {
+						sourceMap: process.env.NODE_ENV !== "production"
+					}
+				}]
 			}
 		]
 	},
