@@ -1,8 +1,8 @@
 
-## React + Google Apps Script
+## TypeScript + React + Google Apps Script
 *Use this demo project as your boilerplate React app for HTML dialogs in Google Sheets, Docs and Forms.*
 
-This project uses labnol's excellent [apps-script-starter](https://github.com/labnol/apps-script-starter) as a starting point, adding support for React. It demonstrates how easy it is to build React apps that interact with Google Apps server-side scripts. Simply clone this project and modify the source code to get started developing with React for Google Apps Script client-side dialogs.
+This project is a fork of [React-Google-Apps-Script](https://github.com/enuchi/React-Google-Apps-Script) (which uses labnol's excellent [apps-script-starter](https://github.com/labnol/apps-script-starter) as a starting point), adding support for TypeScript and React. It demonstrates how easy it is to build React apps that interact with Google Apps server-side scripts. Simply clone this project and modify the source code to get started developing with React for Google Apps Script client-side dialogs.
 
 ![Google Apps Script / React development](https://i.imgur.com/0yYQoYj.jpg "Start a React project for Google Apps Script")
 *The demo app for Google Sheets shows insertion/deletion/activation of sheets through React-built HTML dialog.*
@@ -13,7 +13,7 @@ This project uses labnol's excellent [apps-script-starter](https://github.com/la
 ```
 git clone https://github.com/enuchi/React-Google-Apps-Script.git
 cd React-Google-Apps-Script
-npm install
+yarn
 ```
 Then [create a new Google Sheets spreadsheet](https://sheets.google.com). Open the Script Editor and copy the script's scriptId. [**Tools > Script Editor**, then **File > Project properties**].
 
@@ -30,9 +30,9 @@ npx clasp login
 ```
 Modify the server-side and client-side source code in the `src` folder using ES6/7 and React. Change the scopes in `appsscript.json` if needed. When you're ready, build the app and deploy!
 ```
-npm run deploy
+yarn deploy
 ```
-Webpack will display any linting errors, bundle your files in `dist`, and push your files to Google's servers using CLASP. You can run `npm run build` to just build.
+Webpack will display any linting errors, bundle your files in `dist`, and push your files to Google's servers using CLASP. You can run `yarn build` to just build.
 
 ## The sample app
 Insert/activate/delete sheets through a simple HTML dialog, built with React. Access the dialog through the new menu item that appears. You may need to refresh the spreadsheet and approve the app's permissions the first time you use it.
@@ -55,9 +55,9 @@ In the Google Apps Script environment you need to use [HTML templates](https://d
 ```
 return <div>Name: {person.firstName}</div>
 ```
-- Support for external packages. Simply install with npm or from a file and `import`:
+- Support for external packages. Simply install with yarn or from a file and `import`:
 ```
-$ npm install react-addons-css-transition-group
+$ yarn add react-addons-css-transition-group
 ```
 ```
 // index.jsx
