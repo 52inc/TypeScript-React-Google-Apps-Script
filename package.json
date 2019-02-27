@@ -4,6 +4,7 @@
   "description": "Starter project for Google Apps Script using TypeScript and React",
   "scripts": {
     "test": "test",
+    "login:clasp": "npx clasp login",
     "start": "webpack --mode development",
     "build": "webpack --mode production",
     "deploy": "yarn run build && npx clasp push"

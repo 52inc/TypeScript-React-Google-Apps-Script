@@ -1,24 +1,20 @@
 import * as publicFunctions from "./sheets-utilities";
 
 
-export interface IGlobals {
-	onOpen: typeof publicFunctions.onOpen;
-	openDialog: typeof publicFunctions.openDialog;
-	getSheetsData: typeof publicFunctions.getSheetsData;
-	addSheet: typeof publicFunctions.addSheet;
-	deleteSheet: typeof publicFunctions.deleteSheet;
-	setActiveSheet: typeof publicFunctions.setActiveSheet;
-}
-
-
-// Declare global object type to satisfy linter
-const global = {} as IGlobals;
-
-
 // Expose public functions
+
+// @ts-ignore
 global.onOpen = publicFunctions.onOpen;
+// @ts-ignore
 global.openDialog = publicFunctions.openDialog;
+// @ts-ignore
 global.getSheetsData = publicFunctions.getSheetsData;
+// @ts-ignore
 global.addSheet = publicFunctions.addSheet;
+// @ts-ignore
 global.deleteSheet = publicFunctions.deleteSheet;
+// @ts-ignore
 global.setActiveSheet = publicFunctions.setActiveSheet;
+
+// Maybe someday....
+// https://github.com/Microsoft/TypeScript/issues/19573#issuecomment-447889066

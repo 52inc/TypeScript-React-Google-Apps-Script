@@ -26,7 +26,7 @@ Paste the **scriptId** into the .clasp.json file as below:
 If you have not enabled Google's Apps Script API, do so by visiting https://script.google.com/home/usersettings.
 Log into CLASP to push code to the server from the command line:
 ```
-npx clasp login
+yarn clasp:login
 ```
 Modify the server-side and client-side source code in the `src` folder using ES6/7 and React. Change the scopes in `appsscript.json` if needed. When you're ready, build the app and deploy!
 ```

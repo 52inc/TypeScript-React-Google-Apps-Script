@@ -9,7 +9,7 @@ interface ISheetEditorProps {
 }
 
 export default class SheetEditor extends React.Component<ISheetEditorProps> {
-	public state: { names: never[]; };
+	public state: { names: any[]; };
 
 	constructor(props) {
 		super(props);
