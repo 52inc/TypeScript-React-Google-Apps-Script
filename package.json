@@ -6,12 +6,16 @@
     "test": "test",
     "login:clasp": "npx clasp login",
     "start": "webpack --mode development",
-    "build": "NODE_ENV=production webpack --mode production",
-    "deploy": "yarn run build && npx clasp push"
+    "build": "webpack --mode production",
+    "deploy:stage": "yarn run build && npx clasp push",
+    "deploy:prod": "NODE_ENV=production yarn run build && npx clasp push"
   },
   "keywords": [
     "typescript",
     "react",
+    "sass",
+    "scss",
+    "webpack",
     "google",
     "apps",
     "script",
@@ -44,12 +48,12 @@
     "style-loader": "^0.23.1",
     "tern": "^0.23.0",
     "tern-googleappsscript": "^1.0.2",
+    "terser-webpack-plugin": "^1.2.3",
     "tslint": "^5.13.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0",
     "tslint-webpack-plugin": "^2.0.2",
     "typescript": "^3.3.3333",
-    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   }

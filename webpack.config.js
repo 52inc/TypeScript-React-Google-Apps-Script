@@ -3,33 +3,49 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const GasPlugin = require("gas-webpack-plugin");
 const TSLintPlugin = require("tslint-webpack-plugin");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-
+const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 
-const destination = "dist";
 
+// Config
+const destination = "dist";
+const isDev = process.env.NODE_ENV !== "production";
+
+// Bundle Dialog Template HTML
 const htmlPlugin = new HtmlWebpackPlugin({
 	template: "./src/client/dialog-template.html",
 	filename: "dialog.html",
 	inlineSource: ".(js|css)$" // embed all javascript and css inline
 });
 
-const htmlWebpackInlineSourcePlugin = new HtmlWebpackInlineSourcePlugin();
+
+/*      Shared Config
+================================== */
 
 const sharedConfigSettings = {
 	optimization: {
 		minimizer: [
-			new UglifyJSPlugin({
-				uglifyOptions: {
-					ie8: true,
-					mangle: false,
-					compress: {
-						properties: false
-					},
+			new TerserPlugin({
+				test: /\.js(\?.*)?$/i,
+				parallel: true,
+				sourceMap: isDev,
+				terserOptions: {
+					ie8: true,     // Necessary for GAS compatibility
+					mangle: false, // Necessary for GAS compatibility
+					ecma: undefined,
+					module: false,
+					toplevel: false,
+					nameCache: null,
+					keep_classnames: undefined,
+					safari10: false,
+					parse: {},
+					compress: {},
+					keep_fnames: isDev,
+					warnings: isDev,
 					output: {
-						beautify: true
+						beautify: isDev,
+						comments: isDev
 					}
 				}
 			})
@@ -37,6 +53,10 @@ const sharedConfigSettings = {
 	},
 	module: {}
 };
+
+
+/*    Google Apps Script Config
+================================== */
 
 const appsscriptConfig = {
 	name: "COPY APPSSCRIPT.JSON",
@@ -50,6 +70,10 @@ const appsscriptConfig = {
 		])
 	]
 };
+
+
+/*          Client Config
+================================== */
 
 const clientConfig = Object.assign({}, sharedConfigSettings, {
 	name: "CLIENT",
@@ -86,7 +110,7 @@ const clientConfig = Object.assign({}, sharedConfigSettings, {
 				}, {
 					loader: "sass-loader",
 					options: {
-						sourceMap: process.env.NODE_ENV !== "production"
+						sourceMap: isDev
 					}
 				}]
 			}
@@ -100,6 +124,10 @@ const clientConfig = Object.assign({}, sharedConfigSettings, {
 		})
 	]
 });
+
+
+/*      	Server Config
+================================== */
 
 const serverConfig = Object.assign({}, sharedConfigSettings, {
 	name: "SERVER",
@@ -133,6 +161,10 @@ const serverConfig = Object.assign({}, sharedConfigSettings, {
 		})
 	]
 });
+
+
+/*      Module Exports
+================================== */
 
 module.exports = [
 	appsscriptConfig,

@@ -30,9 +30,17 @@ yarn clasp:login
 ```
 Modify the server-side and client-side source code in the `src` folder using ES6/7 and React. Change the scopes in `appsscript.json` if needed. When you're ready, build the app and deploy!
 ```
-yarn deploy
+yarn deploy:stage
+```
+
+or
+
+```bash
+yarn deploy:prod
 ```
 Webpack will display any linting errors, bundle your files in `dist`, and push your files to Google's servers using CLASP. You can run `yarn build` to just build.
+
+Using `deploy:stage` will give an easier to debug minified version, where `deploy:prod` will minify it to basic obscurity.
 
 ## The sample app
 Insert/activate/delete sheets through a simple HTML dialog, built with React. Access the dialog through the new menu item that appears. You may need to refresh the spreadsheet and approve the app's permissions the first time you use it.
